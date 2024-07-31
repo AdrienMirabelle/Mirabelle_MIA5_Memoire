@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-export default function HomeScreen({ navigation }) {
+const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to HeartPack</Text>
@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -32,3 +32,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+
+export default HomeScreen;

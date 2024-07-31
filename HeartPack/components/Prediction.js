@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const serverUrl = 'http://192.168.1.118:5000';
-
-export default function PredictionScreen() {
+const PredictionScreen = () => {
   const [patientData, setPatientData] = useState({
     age: '',
     sex: '',
@@ -20,11 +18,14 @@ export default function PredictionScreen() {
     thal: '',
   });
 
-  const handleInputChange = (name, value) => {
-    setPatientData({ ...patientData, [name]: value });
+  const handleInputChange = (field, value) => {
+    setPatientData({
+      ...patientData,
+      [field]: value,
+    });
   };
 
-  const generatePatientData = () => {
+  const generateRandomPatient = () => {
     setPatientData({
       age: Math.floor(Math.random() * 100).toString(),
       sex: Math.floor(Math.random() * 2).toString(),
@@ -44,7 +45,7 @@ export default function PredictionScreen() {
 
   const handlePrediction = async () => {
     try {
-      const response = await fetch(`${serverUrl}/predict`, {
+      const response = await fetch('http://192.168.1.118:5000/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,42 +53,45 @@ export default function PredictionScreen() {
         body: JSON.stringify({ data: Object.values(patientData).map(Number) }),
       });
       const result = await response.json();
-      alert(`Prediction: ${result.prediction === 1 ? 'At risk of heart disease' : 'Not at risk'}`);
+      alert(result.prediction === 1 ? 'Suspicion de maladie cardiaque' : 'Pas de suspicion de maladie cardiaque');
     } catch (error) {
-      console.error('Error during prediction:', error);
+      console.error('Error:', error);
     }
   };
 
   return (
     <View style={styles.container}>
-      {Object.keys(patientData).map((key) => (
+      {Object.keys(patientData).map((field, index) => (
         <TextInput
-          key={key}
+          key={index}
           style={styles.input}
-          placeholder={key}
-          value={patientData[key]}
-          onChangeText={(value) => handleInputChange(key, value)}
+          placeholder={field}
+          value={patientData[field]}
+          onChangeText={(value) => handleInputChange(field, value)}
           keyboardType="numeric"
         />
       ))}
-      <Button title="Générer un patient" onPress={generatePatientData} />
+      <Button title="Générer un patient" onPress={generateRandomPatient} />
       <Button title="Lancer la prédiction" onPress={handlePrediction} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 16,
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
-    width: '80%',
+    marginBottom: 12,
+    paddingLeft: 8,
+    width: '100%',
   },
 });
+
+export default PredictionScreen;
