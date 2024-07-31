@@ -36,9 +36,20 @@ Le dossier prédiction contient un Notebook Python où nous réalisons en amont 
 - 2) Sur l'ide (environnement de développement intégré) Arduino, affecter le bon port COM à votre programme et coller le fichier "PulseSensor_BPM.ino" 
 - 3) Téléverser le programme et s'assurer de ne pas ouvrir le Moniteur série car deux programmes ne peuvent pas accéder au même port COM en même temps
 
-## 2) Côté client
+## 2) Installation des librairies
 - 1) Sur Visual Studio Code, au chargement du projet : pip install -r requirements.txt pour installer toutes les librairies utilisées durant le projet.
-- 2) 
 
+## 3) Côté serveur
 
+- 1) Créer un fichier .env à la racine du projet, dans ce fichier y renseigner "MODEL_PATH = " avec le chemin du modèle de prédiction.
+- 2) Dans le terminal : .env\Scripts\Activate pour activer l'environnement virtuel
+- 3) Dans le terminal : cd/Back pour se rendre dans le dossier Back
+- 4) Dans le terminal : python main.py pour lancer le serveur
+
+## 4) Côté client
+
+- 1) Dans un nouveau terminal : cd/HeartPack pour se rendre dans le dossier côté client-
+- 2) Dans le nouveau terminal : npm install pour installer toutes les librairies nécessaires
+- 3) Dans le nouveau terminal : npx expo start pour lancer le côté client
+- 4) Sélectionner l'appareil voulu et l'interface graphique s'affichera
 
