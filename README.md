@@ -21,3 +21,24 @@ Le dossier Back, correspondant au côté serveur de notre application, comporte 
 #### HeartPack
 
 Le dossier HeartPack correspond au côté client de notre application. Nous y trouverons 5 composants principaux : "App.js" qui est la page d'initialisation de React permettantde configurer les routes sur laquelle l'utilisateur naviguera. "HomeScreen.js" Correpond à la page d'accueil, "VitalSigns.js" correspond à l'affichage des constantes cardiaques de l'utilisateur, "Prediction.js" sert à récupérer les prédictions à l'aide de l'API Fetch, mais aussi d'entrer manuelle ou de générer aléatoirement des valeurs pour ladite prédiction. Enfin Le fichier "CombinedScreens.js" permet de bénéficier des deux composants précédents à la fois sur le même écran.
+
+#### Data
+
+Le dossier Data contient le csv "Cleveland Heart Dataset" qui sera utilisé lors de la prédiction du modèle. Le chemin du modèle est sauvegardé dans un fichier .env, il sera donc nécessaire d'utiliser un environnement virtuel.
+
+#### Prédiction
+
+Le dossier prédiction contient un Notebook Python où nous réalisons en amont une anaylse des données fournies par le dataset avant de mettre en place 3 modèles de prédiction : Arbre de décision, RandomForest & régression Logistique. Nous affichons la précision de chaques modèles afin d'en sauvegarder le plus performant grâce à la librairie joblib pour pouvoir l'utiliser sur le front.
+
+# Démarrage du projet
+## 1 ) Arduino 
+- 1) Brancher l'Arduino
+- 2) Sur l'ide (environnement de développement intégré) Arduino, affecter le bon port COM à votre programme et coller le fichier "PulseSensor_BPM.ino" 
+- 3) Téléverser le programme et s'assurer de ne pas ouvrir le Moniteur série car deux programmes ne peuvent pas accéder au même port COM en même temps
+
+## 2) Côté client
+- 1) Sur Visual Studio Code, au chargement du projet : pip install -r requirements.txt pour installer toutes les librairies utilisées durant le projet.
+- 2) 
+
+
+
