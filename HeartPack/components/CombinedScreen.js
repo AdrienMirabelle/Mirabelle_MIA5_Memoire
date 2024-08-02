@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import VitalSignsScreen from './VitalSigns';
 import PredictionScreen from './Prediction';
 
+// Affichage du BPM, du graphique de ce dernier et de la prédiction
 const CombinedScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>

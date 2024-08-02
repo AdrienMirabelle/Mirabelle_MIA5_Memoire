@@ -7,10 +7,10 @@ import os
 
 app = FastAPI()
 
-# Configuration de CORS
+# Nous congigurons ici les CORS pour autoriser les requêtes depuis n'importe quelle origine
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Vous pouvez restreindre cela aux domaines de votre application React
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -18,10 +18,11 @@ app.add_middleware(
 
 bpm_value = 0
 
-# Charger le modèle
+# Chargement du modèle de prédiction
 model_path = os.getenv('MODEL_PATH', 'random_forest_heart_disease_model.joblib')
 model = load(model_path)
 
+# routes pour obtenir le BPM
 @app.get("/get_bpm")
 async def get_bpm():
     global bpm_value
@@ -30,6 +31,7 @@ async def get_bpm():
         bpm_value = bpm
     return {"bpm": bpm_value}
 
+# routes pour obtenir la prédiction
 @app.post("/predict")
 async def predict(data: dict):
     try:
