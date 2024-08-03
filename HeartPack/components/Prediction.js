@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 const PredictionScreen = () => {
   const [patientData, setPatientData] = useState({
@@ -71,8 +73,14 @@ const PredictionScreen = () => {
           keyboardType="numeric"
         />
       ))}
-      <Button title="Générer un patient" onPress={generateRandomPatient} />
-      <Button title="Lancer la prédiction" onPress={handlePrediction} />
+      <View style={styles.buttonContainer}>
+        <View style={styles.buttonWrapper}>
+          <Button title="Générer un patient" onPress={generateRandomPatient} />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <Button title="Lancer la prédiction" onPress={handlePrediction} />
+        </View>
+      </View>
     </View>
   );
 };
@@ -83,6 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
+    backgroundColor: '#FF0000', 
   },
   input: {
     height: 40,
@@ -90,7 +99,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 12,
     paddingLeft: 8,
-    width: '100%',
+    width: '90%', 
+    backgroundColor: '#FFFFFF',
+  },
+  buttonContainer: {
+    flexDirection: 'row', 
+    marginTop: 20,
+    justifyContent: 'space-between', 
+    width: '90%', 
+  },
+  buttonWrapper: {
+    flex: 1, 
+    marginHorizontal: 5, 
   },
 });
 

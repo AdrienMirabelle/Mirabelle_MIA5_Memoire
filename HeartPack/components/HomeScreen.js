@@ -1,7 +1,7 @@
 // HomeScreen.js
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import ECGAnimation from './ECGAnimation'; // Assurez-vous que le chemin est correct
+import ECGAnimation from './ECGAnimation'; 
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation }) => {
       <ECGAnimation />
 
       <Image
-        source={require('./logo.png')} // Remplacez par le chemin vers votre logo
+        source={require('./logo.png')} 
         style={styles.logo}
       />
 
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FF6347', // Change the background color as needed
+    backgroundColor: '#FF0000', 
   },
   header: {
     fontSize: 32,
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   logo: {
-    width: 200, // Adjust width for a bigger logo
-    height: 200, // Adjust height for a bigger logo
+    width: 200, 
+    height: 200, 
     marginBottom: 30,
   },
   button: {

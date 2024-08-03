@@ -13,15 +13,15 @@ const VitalSignsScreen = () => {
       const response = await fetch(`${serverUrl}/get_bpm`);
       const data = await response.json();
       setBpm(data.bpm);
-      setBpmData(prevData => [...prevData, data.bpm].slice(-20)); // Keep only the last 20 data points
+      setBpmData((prevData) => [...prevData, data.bpm].slice(-20)); // Garder uniquement les 20 derniers points de données
     } catch (error) {
       console.error('Error fetching BPM:', error);
     }
   };
 
   useEffect(() => {
-    const interval = setInterval(getBpm, 2000); // Fetch BPM every 2 seconds
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    const interval = setInterval(getBpm, 2000); // Récupérer le BPM toutes les 2 secondes
+    return () => clearInterval(interval); 
   }, []);
 
   return (
@@ -34,27 +34,29 @@ const VitalSignsScreen = () => {
             datasets: [
               {
                 data: bpmData,
+                color: (opacity = 1) => `rgba(255, 0, 0, ${opacity})`, // Ligne rouge
+                strokeWidth: 2, // Épaisseur de la ligne
               },
             ],
           }}
-          width={Dimensions.get('window').width - 40} // from react-native
+          width={Dimensions.get('window').width - 40} 
           height={220}
-          yAxisLabel=""
-          yAxisSuffix=" BPM"
+          yAxisLabel="BPM " // Label pour l'axe des ordonnées
+          xAxisLabel="Temps" // Label pour l'axe des abscisses
           chartConfig={{
-            backgroundColor: '#e26a00',
-            backgroundGradientFrom: '#fb8c00',
-            backgroundGradientTo: '#ffa726',
+            backgroundColor: '#FFFFFF', 
+            backgroundGradientFrom: '#FFFFFF',
+            backgroundGradientTo: '#FFFFFF',
             decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`, // Couleur noire pour les axes et le texte
+            labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
               borderRadius: 16,
             },
             propsForDots: {
               r: '6',
               strokeWidth: '2',
-              stroke: '#ffa726',
+              stroke: '#ff0000', 
             },
           }}
           bezier
@@ -71,7 +73,7 @@ const VitalSignsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FF0000', 
   },
   content: {
     flex: 1,
@@ -81,6 +83,8 @@ const styles = StyleSheet.create({
   bpmText: {
     fontSize: 48,
     fontWeight: 'bold',
+    color: '#FFFFFF', 
+    marginBottom: 20,
   },
 });
 

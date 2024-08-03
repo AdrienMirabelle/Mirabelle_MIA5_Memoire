@@ -1,4 +1,3 @@
-// ECGAnimation.js
 import React, { useRef, useEffect } from 'react';
 import { View, Animated, Dimensions, StyleSheet } from 'react-native';
 import Svg, { Polyline } from 'react-native-svg';
@@ -6,17 +5,17 @@ import Svg, { Polyline } from 'react-native-svg';
 // Obtenir les dimensions de l'écran
 const { width } = Dimensions.get('window');
 
+// Animation du graphique ECG
 const ECGAnimation = () => {
   const animation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Démarrer l'animation en continu
     const startAnimation = () => {
       animation.setValue(0);
 
       Animated.timing(animation, {
         toValue: -width * 1.5,
-        duration: 3000, // Ajustez la durée pour la vitesse désirée
+        duration: 3000, 
         useNativeDriver: true,
       }).start(() => startAnimation());
     };
@@ -24,7 +23,6 @@ const ECGAnimation = () => {
     startAnimation();
   }, [animation]);
 
-  // Interpolation de l'animation
   const translateX = animation.interpolate({
     inputRange: [-width * 1.5, 0],
     outputRange: [0, width * 1.5],
@@ -86,7 +84,7 @@ const ECGAnimation = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 100, // Réduire la hauteur du conteneur pour éviter trop d'espace
+    height: 100, 
     overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',
