@@ -55,4 +55,4 @@ Le dossier prédiction contient un Notebook Python où nous réalisons en amont 
 
 
 
-* HeartPack n'est en aucuns cas un dispositif médical. C'est un projet à but éducatif dans le contexte du Mémoire d'Expertise
+ - * HeartPack n'est en aucuns cas un dispositif médical. C'est un projet à but éducatif dans le contexte du Mémoire d'Expertise
