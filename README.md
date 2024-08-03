@@ -53,3 +53,6 @@ Le dossier prédiction contient un Notebook Python où nous réalisons en amont 
 - 3) Dans le nouveau terminal : npx expo start pour lancer le côté client
 - 4) Sélectionner l'appareil voulu et l'interface graphique s'affichera
 
+
+
+* HeartPack n'est en aucuns cas un dispositif médical. C'est un projet à but éducatif dans le contexte du Mémoire d'Expertise
